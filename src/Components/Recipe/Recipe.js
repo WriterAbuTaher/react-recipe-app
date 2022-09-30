@@ -5,8 +5,8 @@ const Recipe = (recipe) => {
     // console.log(recipe);
     const { image, label } = recipe.recipe
     return (
-        <div className='col-6'>
-            <div className="card recipe-card">
+        <div className='col-md-6 col-xl-4'>
+            <div className="card recipe-card p-2">
                 <img src={image} className="card-img-top card-img" alt="" />
                 <div className="card-body">
                     <h5 className="card-title">{label}</h5>
