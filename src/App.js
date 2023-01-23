@@ -5,7 +5,6 @@ import Recipe from './Components/Recipe/Recipe';
 
 function App() {
 
-
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("chicken");
@@ -21,22 +20,24 @@ function App() {
       .then(data => setRecipes(data.hits))
   }, [query]);
 
+  console.log(recipes);
+
   const updateSearch = e => {
     setSearch(e.target.value)
   }
 
-  const getSearch = e => {
+  const getSearch = (e) => {
     e.preventDefault();
     setQuery(search)
     setSearch("")
   }
 
   return (
-    <div>
+    <div className='container mx-auto'>
       <Navbar search={search} onChange={updateSearch} onSubmit={getSearch}></Navbar>
-      <div className='container grid row mx-auto my-5'>
+      <div className='grid row mx-auto'>
         {
-          recipes.map(recipe => <Recipe recipe={recipe.recipe} key={recipe.recipe.label}></Recipe>)
+          recipes.map((recipe, i) => <Recipe recipe={recipe.recipe} key={i}></Recipe>)
         }
       </div>
     </div>
